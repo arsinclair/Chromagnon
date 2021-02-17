@@ -42,7 +42,6 @@ TYPE_DICT = {'1': "CommandUpdateTabNavigation",
              '2': "CommandRestoredEntry",
              '3': "CommandWindow",
              '4': "CommandSelectedNavigationInTab",
-             '5': "CommandPinnedState",
              '6': "CommandSetExtensionAppID"}
 
 def parse(commandList):
@@ -124,7 +123,7 @@ class CommandPinnedState():
     TODO
     """
     def __init__(self, content):
-        self.pinned = struct.unpack(types.int32, content.read(1))[0]
+        self.pinned = struct.unpack(types.int32, content.read(4))[0]
 
     def __str__(self):
         return "PinnedState - Pinned: %d" % self.pinned
